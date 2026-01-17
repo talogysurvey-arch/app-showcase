@@ -5,7 +5,9 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/app-showcase/", // << ADD THIS LINE for GitHub Pages
+  // GitHub Pages base path — REQUIRED for correct loading
+  base: "/app-showcase/",
+
   server: {
     host: "::",
     port: 8080,
@@ -13,9 +15,11 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
+
   plugins: [react(), mode === "development" && componentTagger()].filter(
     Boolean,
   ),
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
